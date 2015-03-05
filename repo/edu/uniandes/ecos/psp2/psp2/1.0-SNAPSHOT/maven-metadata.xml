@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata modelVersion="1.1.0">
+  <groupId>edu.uniandes.ecos.psp2</groupId>
+  <artifactId>psp2</artifactId>
+  <version>1.0-SNAPSHOT</version>
+  <versioning>
+    <snapshot>
+      <timestamp>20150305.033526</timestamp>
+      <buildNumber>1</buildNumber>
+    </snapshot>
+    <lastUpdated>20150305033526</lastUpdated>
+    <snapshotVersions>
+      <snapshotVersion>
+        <extension>jar</extension>
+        <value>1.0-20150305.033526-1</value>
+        <updated>20150305033526</updated>
+      </snapshotVersion>
+      <snapshotVersion>
+        <extension>pom</extension>
+        <value>1.0-20150305.033526-1</value>
+        <updated>20150305033526</updated>
+      </snapshotVersion>
+    </snapshotVersions>
+  </versioning>
+</metadata>
