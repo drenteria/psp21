@@ -45,15 +45,19 @@ public class XValueFinder {
 	private double expectedP;
 	
 	/**
+	 * Stores the error get at the moment of the calculations
+	 */
+	private double currentError;
+	
+	/**
 	 * Empty constructor for class
 	 */
 	public XValueFinder(){
 		this.degreesOfFreedom = 0;
 		this.trialValue = 1.0;
-		this.acceptedError = 0.0001;
-		this.diffTrial = 0.5;
-		this.integrator = new SimpsonRuleIntegration(10, trialValue, 
-				acceptedError, degreesOfFreedom);
+		this.acceptedError = 0.00001;
+		this.diffTrial = 1.0;
+		this.currentError = 0D;
 	}
 	
 	/**
@@ -67,19 +71,97 @@ public class XValueFinder {
 		this.degreesOfFreedom = dof;
 		this.expectedP = expectedP;
 		this.acceptedError = error;
-		this.integrator = new SimpsonRuleIntegration(10, trialValue, 
-				acceptedError, degreesOfFreedom);
 	}
 	
-	public double findXValue() throws Exception{
-		double pValue = integrator.getIntegralApproximation();  
+	/**
+	 * This method evaluates the integration to find the closest <i>p</i>
+	 * value for the given <i>x</i> value.
+	 * @return	The final p value within the accepted error 
+	 * @throws Exception
+	 */
+	public void findXValue() throws Exception{
 		
-		System.out.println("x: " + trialValue);
 		System.out.println("Expected p: " + expectedP);
-		System.out.println("Actual p: " + pValue);
-		System.out.println("Error: " + (pValue - expectedP));
+		System.out.println("DOF: " + degreesOfFreedom);
 		
-		return pValue;
+		integrator = new SimpsonRuleIntegration(10, trialValue, 
+				acceptedError, degreesOfFreedom);
+		double pValue = integrator.getIntegralApproximation();
+		currentError = (pValue - expectedP);
+		
+		while(!isWithinRange(pValue)){
+			adjustDiffValue(pValue, diffTrial);
+			adjustTrialValue(pValue);
+			integrator = new SimpsonRuleIntegration(10, trialValue, 
+					acceptedError, degreesOfFreedom);
+			pValue = integrator.getIntegralApproximation();
+			currentError = (pValue - expectedP);
+		}
+		
+		System.out.println("X value found: " + trialValue);
+		System.out.println("Error obtained: " + currentError);
+		System.out.println("--");
+		
+	}
+	
+	/**
+	 * Evaluates whether or not the obtained integration value is
+	 * within the range of accepted error
+	 * @param p The obtained <i>p</i> value
+	 * @return <code>true</code> if the value is within the error range.
+	 * <code>false</code> otherwise
+	 */
+	public boolean isWithinRange(double p){
+		if(Math.abs(p - expectedP) <= acceptedError){
+			return true;
+		}
+		return false;
+	}
+	
+	/**
+	 * This method evaluates if the d value must be changed
+	 * and changes it, if needed
+	 * @param currentP	Current P value 
+	 * @param diff	The current d value
+	 */
+	public void adjustDiffValue(double currentP, double diff){
+		if(diffTrial == trialValue){
+			diffTrial = 0.5;
+			return;
+		}
+		if(currentP > expectedP){
+			diffTrial = diff / 2;
+		}
+	}
+	
+	/**
+	 * This method adjusts the x trial value to evaluate the values
+	 * to integrate
+	 * @param currentPValue
+	 */
+	public void adjustTrialValue(double currentPValue){
+		if(currentPValue < expectedP){
+			trialValue += diffTrial;
+		}
+		else {
+			trialValue -= diffTrial;
+		}
+	}
+	
+	/**
+	 * Obtain the current X trial value for this instance
+	 * @return The x trial value
+	 */
+	public double getXValue(){
+		return trialValue;
+	}
+	
+	/**
+	 * Obtains the current error when calculating X value
+	 * @return The current error
+	 */
+	public double getCurrentErrorValue(){
+		return currentError;
 	}
 
 }
