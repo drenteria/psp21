@@ -64,9 +64,9 @@ public class WebController {
 				"<p>X value find results:.</p>" +
 				"Degrees of Freedom: " + String.valueOf(dof) + "<br/>" +
 				"Expected P Value: " + String.valueOf(expectedP) + "<br/>" +
-				"Allowed Error (E): " + String.valueOf(allowedError) + "><br/>" +
-				"Calculated Error: " + String.valueOf(error) + "><br/>" +
-				"X closest value found: " + String.valueOf(xValue) + "><br/>" +
+				"Allowed Error (E): " + String.valueOf(allowedError) + "<br/>" +
+				"Calculated Error: " + String.valueOf(error) + "<br/>" +
+				"X closest value found: " + String.valueOf(xValue) + "<br/>" +
 				"</body>" +
 				"</html>";
 		PrintWriter writer = rsp.getWriter();
