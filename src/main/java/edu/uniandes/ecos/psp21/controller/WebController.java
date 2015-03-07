@@ -71,7 +71,6 @@ public class WebController {
 				"</html>";
 		PrintWriter writer = rsp.getWriter();
 		writer.write(formString);
-		
 	}
 
 }

@@ -34,9 +34,9 @@ public class XValueFinderTest
      * from the assignment kit and the error is less than the allowed error configured
      * 
      */
-    public void testFindXValue01()
+    public void testFindXValue()
     {
-        double allowedError = 0.00001;
+        double allowedError = 0.000001;
     	try {
         	XValueFinder finder1 = new XValueFinder(6, 0.20, allowedError);
         	finder1.findXValue();

@@ -11,6 +11,10 @@ import edu.uniandes.ecos.psp21.model.XValueFinder;
  */
 public class ConsoleApp 
 {
+	/**
+	 * The main method to execute via Console this Application
+	 * @param args	Execution arguments
+	 */
     public static void main( String[] args )
     {
     	System.out.println("--- X value Finder for a given p value for T-Distribution ---");
@@ -29,6 +33,9 @@ public class ConsoleApp
 			
 			System.out.println("Type the expected p value:");
 			expectedP = Double.valueOf(scanner.nextLine());
+			
+			System.out.println("Type the allowed error (E):");
+			allowedError = Double.valueOf(scanner.nextLine());
 			
 			finder = new XValueFinder(degreesOfFreedom, expectedP, allowedError);
 			finder.findXValue();
