@@ -1,0 +1,42 @@
+--- X value Finder for a given p value for T-Distribution ---
+--- Using Simpson Rule Integration ---
+NOTE: Please be sure all numbers you write are decimals or at least numbers. No letters!
+Type the degrees of freedom:
+6
+Type the expected p value:
+0.20
+Expected p: 0.2
+DOF: 6
+X value found: 0.55322265625
+Error obtained: -5.0888963042200475E-5
+--
+
+========
+
+--- X value Finder for a given p value for T-Distribution ---
+--- Using Simpson Rule Integration ---
+NOTE: Please be sure all numbers you write are decimals or at least numbers. No letters!
+Type the degrees of freedom:
+15
+Type the expected p value:
+0.45
+Expected p: 0.45
+DOF: 15
+X value found: 1.75390625
+Error obtained: 7.553625272088693E-5
+--
+
+=======
+
+--- X value Finder for a given p value for T-Distribution ---
+--- Using Simpson Rule Integration ---
+NOTE: Please be sure all numbers you write are decimals or at least numbers. No letters!
+Type the degrees of freedom:
+4
+Type the expected p value:
+0.495
+Expected p: 0.495
+DOF: 4
+X value found: 4.625
+Error obtained: 7.789752826226071E-5
+--

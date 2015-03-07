@@ -77,7 +77,6 @@ public class XValueFinder {
 	/**
 	 * This method evaluates the integration to find the closest <i>p</i>
 	 * value for the given <i>x</i> value.
-	 * @return	The final p value within the accepted error 
 	 * @throws Exception
 	 */
 	public void findXValue() throws Exception {
